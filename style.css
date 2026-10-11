@@ -1,0 +1,127 @@
+/* ===== COLOURS (from Hira's brief: pastel pink, cream, a little gold) ===== */
+:root {
+  --pink: #f8d7da;
+  --pink-dark: #e59aa8;
+  --cream: #fff8ef;
+  --gold: #c9a14a;
+  --text: #4a3b3b;
+}
+
+/* ===== RESET ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }   /* makes the "hidden" attribute always work */
+
+/* ===== BASE ===== */
+body {
+  font-family: Georgia, serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+}
+section { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+h2 { text-align: center; color: var(--pink-dark); margin-bottom: 20px; font-size: 1.8rem; }
+h3 { margin: 18px 0 6px; color: var(--gold); }
+
+.navbar{
+  gap: 50px;
+}
+
+/* ===== HEADER ===== */
+header {
+  background: var(--pink);
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+header h1 { font-size: 1.4rem; }
+header h1 span { color: var(--gold); font-weight: normal; }
+nav a { margin-left: 14px; color: var(--text); text-decoration: none; }
+
+/* ===== HERO ===== */
+.hero { text-align: center; padding: 60px 20px; }
+.hero h2 { color: var(--text); font-size: 2.2rem; }
+
+/* ===== BUTTON ===== */
+.btn {
+  display: inline-block;
+  background: var(--pink-dark);
+  color: #fff;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+/* ===== CARDS / GRID (bestsellers and gallery) ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));  /* fits any screen width */
+  gap: 16px;
+}
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+}
+.card strong { color: var(--gold); }
+
+/* ===== MENU LIST ===== */
+#menu-list ul { list-style: none; }
+#menu-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--pink-dark);
+}
+.note { font-size: .9rem; margin-top: 14px; text-align: center; }
+
+/* ===== GALLERY ===== */
+#gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;       /* crops photos neatly to the same size */
+  border-radius: 14px;
+}
+
+/* ===== ORDER FORM ===== */
+form {
+  background: #fff;
+  padding: 24px;
+  border-radius: 14px;
+  display: grid;
+  gap: 12px;
+}
+label { display: grid; gap: 4px; font-size: .95rem; }
+input, select, textarea {
+  padding: 10px;
+  border: 1px solid var(--pink-dark);
+  border-radius: 8px;
+  font: inherit;
+}
+form small { color: #8a6d6d; }
+.delivery-fields { display: grid; gap: 12px; }
+
+/* ===== CONTACT + FOOTER ===== */
+#contact { text-align: center; }
+footer {
+  text-align: center;
+  padding: 24px;
+  background: var(--pink);
+  font-size: .9rem;
+}
+
+/* Smooth scrolling when clicking links like #menu, #order */
+html { scroll-behavior: smooth; }
+
+/* Turns smooth scroll off for people whose device is set to reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

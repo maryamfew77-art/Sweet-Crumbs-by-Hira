@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Makes the site fit phone screens -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sweet Crumbs by Hira | Homemade Cakes in Faisalabad</title>
+  <meta name="description" content="Fresh homemade cakes, cupcakes and brownies in Faisalabad. Order easily on WhatsApp.">
+  <!-- Connects the CSS file (must be in the same folder as index.html) -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<header>
+  <h1>Sweet Crumbs <span>by Hira</span></h1>
+  <nav class="navbar">
+    <a href="#menu">Menu</a><a href="#gallery">Gallery</a>
+    <a href="#order">Order</a><a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO: first thing visitors see -->
+<section class="hero">
+  <h2>Fresh homemade cakes, baked with love in Faisalabad</h2>
+  <p>Ordering is easy. Fill the form and we continue on WhatsApp.</p>
+  <a class="btn" href="#order">Order Now</a>
+</section>
+
+<!-- BESTSELLERS: filled by JavaScript from the MENU list -->
+<section>
+  <h2>Our Bestsellers</h2>
+  <div class="grid" id="best-grid"></div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <h2>Menu</h2>
+  <div id="menu-list"></div>
+  <p class="note">Custom cake prices depend on the design. Send a reference photo and Hira will give you a quote.</p>
+</section>
+
+<!-- GALLERY: put your photos in the images/ folder -->
+<section id="gallery">
+  <h2>Gallery</h2>
+  <div class="grid">
+    <!-- TODO: replace file names and alt text with real photos -->
+    <img src="./assets/images/cake1.jpg" alt="Chocolate fudge cake" loading="lazy">
+    <img src="./assets/images/cake2 - Copy.jpg" alt="Biscoff cheesecake" loading="lazy">
+    <img src="./assets/images/cake3 - Copy.jpg" alt="Red velvet cupcakes" loading="lazy">
+    <img src="./assets/images/cake4.jpg" alt="Birthday cake" loading="lazy">
+    <img src="./assets/images/cake5.jpg" alt="Brownies" loading="lazy">
+    <img src="./assets/images/cake6.jpg" alt="Cookies" loading="lazy">
+  </div>
+</section>
+
+<!-- ORDER FORM -->
+<section id="order">
+  <h2>Place an Order</h2>
+  <form id="order-form">
+    <label>Your name <input id="f-name" required></label>
+    <label>Phone / WhatsApp number <input id="f-phone" type="tel" required></label>
+
+    <label>Item <select id="f-item" required></select></label>
+    <label>Size <select id="f-size" required></select></label>
+    <label>Quantity <input id="f-qty" type="number" min="1" value="1" required></label>
+
+    <label>Date needed <input id="f-date" type="date" required>
+      <small id="notice"></small>
+    </label>
+
+    <label>Delivery or pickup
+      <select id="f-mode" required>
+        <option value="Pickup">Pickup</option>
+        <option value="Delivery">Delivery</option>
+      </select>
+    </label>
+
+    <!-- Shown only when Delivery is chosen -->
+    <div id="delivery-fields" class="delivery-fields" hidden>
+      <label>Area
+        <select id="f-area">
+          <option value="">Choose your area</option>
+          <option>Peoples Colony</option><option>D Ground</option>
+          <option>Madina Town</option><option>Susan Road</option>
+          <option>Gulberg</option>
+          <option>Satiana Road (extra rider charge, Hira will confirm)</option>
+          <option>Other area (Hira will confirm)</option>
+        </select>
+      </label>
+      <label>Delivery address <textarea id="f-address" rows="2"></textarea></label>
+      <small>Delivery charges are paid by the customer.</small>
+    </div>
+
+    <label>Message on cake (optional) <input id="f-msg"></label>
+
+    <small>
+      Custom cakes need 50% advance. Payment details are sent on WhatsApp after Hira confirms your order.
+      After the form opens WhatsApp, please attach your reference photo in the chat.
+    </small>
+    <button class="btn" type="submit">Send Order on WhatsApp</button>
+  </form>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>WhatsApp replies: 10 am to 8 pm, Monday to Saturday (closed Sunday)</p>
+  <p>Pickup address is shared after your order is confirmed.</p>
+  <a class="btn" id="wa-link" target="_blank" rel="noopener">Chat on WhatsApp</a>
+  <!-- TODO: put Hira's real Instagram link -->
+  <a class="btn" href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">Instagram</a>
+</section>
+
+<footer>&copy; 2026 Sweet Crumbs by Hira, Faisalabad</footer>
+
+<script src="./script.js"></script>
+</body>
+</html>
