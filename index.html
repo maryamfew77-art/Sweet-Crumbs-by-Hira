@@ -6,28 +6,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sweet Crumbs by Hira | Homemade Cakes in Faisalabad</title>
   <meta name="description" content="Fresh homemade cakes, cupcakes and brownies in Faisalabad. Order easily on WhatsApp.">
+  <meta name="theme-color" content="#f8d7da">
   <!-- Connects the CSS file (must be in the same folder as index.html) -->
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-<header>
-  <h1>Sweet Crumbs <span>by Hira</span></h1>
-  <nav class="navbar">
-    <a href="#menu">Menu</a><a href="#gallery">Gallery</a>
-    <a href="#order">Order</a><a href="#contact">Contact</a>
-  </nav>
+<!-- Lets keyboard users jump straight to the content -->
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- HEADER: logo + hamburger button (phones) + navigation links -->
+<header class="site-header">
+  <div class="nav-container">
+    <a class="brand" href="#top">Sweet Crumbs <span>by Hira</span></a>
+
+    <!-- Hamburger button: only visible on phones (see style.css) -->
+    <button class="menu-toggle" id="menu-toggle" type="button"
+            aria-label="Open menu" aria-expanded="false" aria-controls="navbar">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#order">Order</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
+<main id="main">
+
 <!-- HERO: first thing visitors see -->
-<section class="hero">
-  <h2>Fresh homemade cakes, baked with love in Faisalabad</h2>
-  <p>Ordering is easy. Fill the form and we continue on WhatsApp.</p>
-  <a class="btn" href="#order">Order Now</a>
+<!-- HERO: first thing visitors see -->
+<section class="hero" id="top">
+  <h1>Fresh homemade cakes, baked with love in Faisalabad</h1>
+  <p class="hero-sub">Ordering is easy. Fill the form and we continue on WhatsApp.</p>
+  <div class="hero-actions">
+    <a class="btn btn-lg" href="#order">Order Now</a>
+    <a class="btn btn-outline btn-lg" href="#menu">See Menu</a>
+  </div>
+  <p class="hero-hours">WhatsApp replies 10 AM to 8 PM, closed on Sundays</p>
 </section>
 
 <!-- BESTSELLERS: filled by JavaScript from the MENU list -->
-<section>
+<section id="bestsellers">
   <h2>Our Bestsellers</h2>
   <div class="grid" id="best-grid"></div>
 </section>
@@ -42,76 +65,139 @@
 <!-- GALLERY: put your photos in the images/ folder -->
 <section id="gallery">
   <h2>Gallery</h2>
-  <div class="grid">
+  <div class="gallery-grid">
     <!-- TODO: replace file names and alt text with real photos -->
-    <img src="./assets/images/cake1.jpg" alt="Chocolate fudge cake" loading="lazy">
-    <img src="./assets/images/cake2 - Copy.jpg" alt="Biscoff cheesecake" loading="lazy">
-    <img src="./assets/images/cake3 - Copy.jpg" alt="Red velvet cupcakes" loading="lazy">
-    <img src="./assets/images/cake4.jpg" alt="Birthday cake" loading="lazy">
-    <img src="./assets/images/cake5.jpg" alt="Brownies" loading="lazy">
-    <img src="./assets/images/cake6.jpg" alt="Cookies" loading="lazy">
+    <img src="./assets/images/cake1.jpg" alt="Chocolate fudge cake" loading="lazy" decoding="async">
+    <img src="./assets/images/cake2 - Copy.jpg" alt="Biscoff cheesecake" loading="lazy" decoding="async">
+    <img src="./assets/images/cake3 - Copy.jpg" alt="Red velvet cupcakes" loading="lazy" decoding="async">
+    <img src="./assets/images/cake4.jpg" alt="Birthday cake" loading="lazy" decoding="async">
+    <img src="./assets/images/cake5.jpg" alt="Brownies" loading="lazy" decoding="async">
+    <img src="./assets/images/cake6.jpg" alt="Cookies" loading="lazy" decoding="async">
   </div>
 </section>
 
 <!-- ORDER FORM -->
 <section id="order">
   <h2>Place an Order</h2>
+  <p class="section-intro">Fill in the form and WhatsApp opens with your order ready to send. Fields marked <span class="req" aria-hidden="true">*</span> are required.</p>
+
   <form id="order-form">
-    <label>Your name <input id="f-name" required></label>
-    <label>Phone / WhatsApp number <input id="f-phone" type="tel" required></label>
 
-    <label>Item <select id="f-item" required></select></label>
-    <label>Size <select id="f-size" required></select></label>
-    <label>Quantity <input id="f-qty" type="number" min="1" value="1" required></label>
+    <fieldset>
+      <legend>Your details</legend>
+      <label>Your name <span class="req" aria-hidden="true">*</span>
+        <input id="f-name" autocomplete="name" required>
+      </label>
+      <label>Phone / WhatsApp number <span class="req" aria-hidden="true">*</span>
+        <input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="03XX XXXXXXX" required aria-describedby="phone-error">
+        <small class="error" id="phone-error" role="alert"></small>
+      </label>
+    </fieldset>
 
-    <label>Date needed <input id="f-date" type="date" required>
-      <small id="notice"></small>
-    </label>
+    <fieldset>
+      <legend>Order details</legend>
+      <label>Item <span class="req" aria-hidden="true">*</span>
+        <select id="f-item" required></select>
+      </label>
+      <div class="row">
+        <label>Size <span class="req" aria-hidden="true">*</span>
+          <select id="f-size" required></select>
+        </label>
+        <label>Quantity <span class="req" aria-hidden="true">*</span>
+          <input id="f-qty" type="number" inputmode="numeric" min="1" step="1" value="1" required>
+        </label>
+      </div>
 
-    <label>Delivery or pickup
-      <select id="f-mode" required>
-        <option value="Pickup">Pickup</option>
-        <option value="Delivery">Delivery</option>
-      </select>
-    </label>
+      <!-- Shown BEFORE the date is chosen -->
+      <div class="notice-box">
+        <strong>Advance notice needed</strong>
+        <ul>
+          <li>Cakes: 3 days</li>
+          <li>Fancy custom cakes: 5 days</li>
+          <li>Cupcakes and brownies: 1 to 2 days</li>
+        </ul>
+      </div>
 
-    <!-- Shown only when Delivery is chosen -->
-    <div id="delivery-fields" class="delivery-fields" hidden>
-      <label>Area
-        <select id="f-area">
-          <option value="">Choose your area</option>
-          <option>Peoples Colony</option><option>D Ground</option>
-          <option>Madina Town</option><option>Susan Road</option>
-          <option>Gulberg</option>
-          <option>Satiana Road (extra rider charge, Hira will confirm)</option>
-          <option>Other area (Hira will confirm)</option>
+      <label>Date needed <span class="req" aria-hidden="true">*</span>
+        <input id="f-date" type="date" required aria-describedby="notice date-error">
+        <small id="notice" aria-live="polite"></small>
+        <small class="error" id="date-error" role="alert"></small>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Delivery or pickup</legend>
+      <label>How would you like to receive it? <span class="req" aria-hidden="true">*</span>
+        <select id="f-mode" required>
+          <option value="Pickup">Pickup</option>
+          <option value="Delivery">Delivery</option>
         </select>
       </label>
-      <label>Delivery address <textarea id="f-address" rows="2"></textarea></label>
-      <small>Delivery charges are paid by the customer.</small>
+
+      <p class="hint"><strong>Delivery areas in Faisalabad:</strong> Peoples Colony, D Ground, Madina Town, Susan Road and Gulberg. Satiana Road needs Hira's confirmation first (extra rider charge).</p>
+      <p class="hint" id="pickup-note">Pickup address is shared after your order is confirmed.</p>
+
+      <!-- Shown only when Delivery is chosen -->
+      <div id="delivery-fields" class="delivery-fields" hidden>
+        <label>Area <span class="req" aria-hidden="true">*</span>
+          <select id="f-area">
+            <option value="">Choose your area</option>
+            <option>Peoples Colony</option><option>D Ground</option>
+            <option>Madina Town</option><option>Susan Road</option>
+            <option>Gulberg</option>
+            <option>Satiana Road (extra rider charge, Hira will confirm)</option>
+            <option>Other area (Hira will confirm)</option>
+          </select>
+          <small id="area-hint" aria-live="polite"></small>
+        </label>
+        <label>Delivery address <span class="req" aria-hidden="true">*</span>
+          <textarea id="f-address" rows="2" autocomplete="street-address"></textarea>
+        </label>
+        <small>Delivery charges are paid by the customer.</small>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Extras</legend>
+      <label>Message on cake <span class="opt">(optional)</span>
+        <input id="f-msg">
+      </label>
+      <label>Special instructions <span class="opt">(optional)</span>
+        <textarea id="f-notes" rows="2"></textarea>
+      </label>
+    </fieldset>
+
+    <div class="info-box">
+      <p>Custom cakes need 50% advance. Payment details are sent on WhatsApp after Hira confirms your order.</p>
+      <p>After the form opens WhatsApp, please attach your reference photo in the chat.</p>
     </div>
 
-    <label>Message on cake (optional) <input id="f-msg"></label>
-
-    <small>
-      Custom cakes need 50% advance. Payment details are sent on WhatsApp after Hira confirms your order.
-      After the form opens WhatsApp, please attach your reference photo in the chat.
-    </small>
-    <button class="btn" type="submit">Send Order on WhatsApp</button>
+    <button class="btn btn-lg" type="submit">Send Order on WhatsApp</button>
   </form>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
   <h2>Contact</h2>
-  <p>WhatsApp replies: 10 am to 8 pm, Monday to Saturday (closed Sunday)</p>
-  <p>Pickup address is shared after your order is confirmed.</p>
-  <a class="btn" id="wa-link" target="_blank" rel="noopener">Chat on WhatsApp</a>
-  <!-- TODO: put Hira's real Instagram link -->
-  <a class="btn" href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">Instagram</a>
+  <div class="contact-card">
+    <p><strong>WhatsApp replies:</strong> 10 AM to 8 PM, Monday to Saturday</p>
+    <p class="closed">Closed on Sundays</p>
+    <p>Pickup address is shared after your order is confirmed.</p>
+    <div class="contact-actions">
+      <a class="btn btn-lg" id="wa-link" target="_blank" rel="noopener"><span aria-hidden="true">💬</span> Chat on WhatsApp</a>
+      <!-- Hidden until Hira's Instagram username is added in script.js -->
+      <a class="btn btn-outline btn-lg" id="ig-link" target="_blank" rel="noopener" hidden><span aria-hidden="true">📷</span> Instagram</a>
+    </div>
+  </div>
 </section>
 
-<footer>&copy; 2026 Sweet Crumbs by Hira, Faisalabad</footer>
+</main>
+
+<footer>
+  <p class="footer-brand">Sweet Crumbs <span>by Hira</span></p>
+  <p>Faisalabad &middot; WhatsApp replies 10 AM to 8 PM &middot; Closed on Sundays</p>
+  <p class="copyright">&copy; 2026 Sweet Crumbs by Hira, Faisalabad</p>
+</footer>
 
 <script src="./script.js"></script>
 </body>
